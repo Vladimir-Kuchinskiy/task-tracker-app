@@ -1,0 +1,43 @@
+version: "3.6"
+
+services:
+  web:
+    build:
+      dockerfile: "Dockerfile.dev"
+      context: ./todo-rails
+    env_file: .env
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - redis
+    stdin_open: true
+    tty: true
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    env_file:
+      - .env
+  db:
+    image: postgres:10.3-alpine
+    env_file: .env
+    depends_on:
+      - mailcatcher
+    volumes:
+      - ./db-data:/var/lib/postgresql/db-data
+  redis:
+    image: redis:5.0.5-alpine
+  mailcatcher:
+    image: yappabe/mailcatcher
+    ports:
+      - 1025:1025
+      - 1080:1080
+  todo-react:
+    build:
+      dockerfile: "Dockerfile.dev"
+      context: ./todo-react
+    volumes:
+      - /app/node_modules
+      - ./client:/app

@@ -1,0 +1,7 @@
+.nav-link-card {
+  cursor: pointer;
+}
+
+.nav-link-card:hover {
+  background-color: #ececec;
+}

@@ -1,0 +1,15 @@
+.add-board {
+  width: 240px;
+  height: 80px;
+  border: 1px solid rgb(0, 109, 240);
+  border-radius: 4px;
+  margin-top: 20px;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding: 20px 0;
+  padding-top: 25px;
+}
+.add-board:hover {
+  cursor: pointer;
+  background-color: rgb(0, 109, 240);
+}

@@ -1,0 +1,12 @@
+version: "2"
+services:
+  todo-react:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: npm start
+    expose:
+      - 3001
+    ports:
+      - 3001:3000

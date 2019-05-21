@@ -1,0 +1,29 @@
+.list {
+  display: grid;
+  grid-template-rows: auto minmax(auto, 1fr) auto;
+}
+.list > * {
+  background-color: #e2e4e6;
+  color: #333;
+  padding: 0 10px;
+}
+.list ul {
+  padding: 0;
+  max-height: calc(100vh - 16rem);
+  overflow-y: auto;
+}
+ul::-webkit-scrollbar {
+  width: 1rem;
+}
+ul::-webkit-scrollbar-thumb {
+  background-color: #c4c9cc;
+  border-right: 0.1rem solid #e2e4e6;
+  border-radius: 5px;
+}
+ul::-webkit-scrollbar-thumb:hover {
+  background-color: #acb0b3d2;
+}
+.list-header-wrapper {
+  width: 300px;
+  height: calc(100% - 10px - 17px);
+}

@@ -1,0 +1,9 @@
+<h3>
+  Hey, You've been unassigned from a card <%= @card.content %> by <%=
+  @unassigner.email %>
+</h3>
+<h4>
+  You can go to <%= link_to "#{@card.board.title} board",
+  "localhost:3001/#{@card.board.team_id ? "teams/#{@card.board.team_id}/" :
+  ""}boards/#{@card.board.id}" %>
+</h4>

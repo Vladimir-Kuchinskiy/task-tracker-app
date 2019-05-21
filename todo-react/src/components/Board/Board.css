@@ -1,0 +1,24 @@
+.board-title {
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.board-title:hover {
+  color: #000;
+  background-color: #dbdcdd;
+}
+.content::-webkit-scrollbar {
+  height: 1.5rem;
+}
+.content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.349);
+  border: 0.5rem solid #ffffff;
+  border-top-width: 0;
+}
+.content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.52);
+}
+.content.board {
+  height: 100%;
+  overflow-x: auto;
+}

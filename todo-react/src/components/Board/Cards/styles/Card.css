@@ -1,0 +1,31 @@
+.list ul li:hover {
+  background-color: rgb(241, 241, 241);
+}
+.list ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.list ul li img {
+  display: block;
+  width: calc(100% + 2 * 10px);
+  margin: -10px 0 10px -10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.list ul li .edit-card {
+  padding: 10px;
+  padding-bottom: -5px;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+p.description {
+  color: black;
+}
+.card-description {
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.card-description:hover {
+  color: #000;
+  background-color: #ececec;
+}

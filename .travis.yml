@@ -1,0 +1,22 @@
+require: sudo
+services:
+  - docker
+
+before_install:
+  - docker-compose build client
+  - docker-compose build server
+
+script:
+  - docker-compose run --rm client npm run ci-test
+  - docker-compose run --rm server RAILS_ENV=test rails db:create db:migrate
+  - docker-compose run --rm server rubocop && rspec
+# after_success:
+#   - docker build -t vladimirkuchinskiy/task-tracker-client ./todo-react
+#   - docker build -t vladimirkuchinskiy/task-tracker-server ./todo-rails
+#   - docker build -t vladimirkuchinskiy/task-tracker-nginx ./nginx
+#   # Login to docker cli
+#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+#   # Take those images and push them to docker hub
+#   - docker push vladimirkuchinskiy/task-tracker-client
+#   - docker push vladimirkuchinskiy/task-tracker-server
+#   - docker push vladimirkuchinskiy/task-tracker-nginx

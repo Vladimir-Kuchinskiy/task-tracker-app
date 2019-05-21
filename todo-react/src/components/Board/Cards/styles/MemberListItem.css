@@ -1,0 +1,20 @@
+.member-item:hover {
+  cursor: pointer;
+  background-color: rgb(105, 152, 240);
+  color: #fff;
+}
+
+.member-list-avatar {
+  display: 'inline-block';
+  margin-left: '-13px';
+  margin-top: '-6px';
+  margin-bottom: '9px';
+  height: 15px;
+}
+
+.user-member-email {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 0 0 10px;
+}
