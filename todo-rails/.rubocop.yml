@@ -13,5 +13,6 @@ Metrics/BlockLength:
     - "Rakefile"
     - "**/*.rake"
     - "spec/**/*.rb"
+    - "config/environments/development.rb"
 # RSpec/NestedGroups:
 #   Max: 6
