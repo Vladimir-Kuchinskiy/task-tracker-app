@@ -26,3 +26,4 @@ todo-rails/config/master.key
 todo-rails/db-data
 
 todo-rails/.env
+.env

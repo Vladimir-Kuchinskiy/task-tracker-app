@@ -7,7 +7,7 @@ services:
   - docker
 
 before_install:
-  - cp todo-rails/.env.example todo-rails/.env
+  - cp .env.example .env
   - docker-compose build client
   - docker-compose build api
 

@@ -5,13 +5,16 @@ services:
     build:
       dockerfile: "Dockerfile.dev"
       context: ./todo-rails
-    env_file: ./todo-rails/.env
+    env_file: .env
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - POSTGRES_USER=postgres
+      - PGUSER=postgres
       - POSTGRES_HOST=db
+      - PGPASSWORD=$PGPASSWORD
       - MAIL_USERNAME=tasktracker59@gmail.com
+      - MAIL_PASSWORD=$MAIL_PASSWORD
+      - RAILS_MASTER_KEY=$RAILS_MASTER_KEY
     volumes:
       - ./todo-rails:/app
     depends_on:
@@ -30,12 +33,17 @@ services:
     build:
       dockerfile: "Dockerfile.dev"
       context: ./todo-rails
-    env_file: ./todo-rails/.env
+    env_file: .env
     command: bundle exec sidekiq -C config/sidekiq.yml
   db:
     image: postgres:10.3-alpine
+    env_file: .env
+    environment:
+      - PGUSER=postgres
+      - PGPASSWORD=$PGPASSWORD
     volumes:
       - ./todo-rails/db-data:/var/lib/postgresql/db-data
+
   redis:
     image: redis:5.0.5-alpine
   client:
