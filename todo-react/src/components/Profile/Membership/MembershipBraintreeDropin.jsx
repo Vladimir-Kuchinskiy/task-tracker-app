@@ -6,10 +6,11 @@ import Spinner from '../../common/Spinner';
 import Button from '../../common/Button';
 
 const MembershipBraintreeDropin = ({ authToken, ...props }) => {
+  const { getClientToken } = props;
+
   useEffect(() => {
-    const { getClientToken } = props;
     getClientToken(authToken);
-  }, []);
+  }, [getClientToken, authToken]);
 
   const handleClick = () => {
     const { buyMembership, buyMembershipLoadingFinish, instance, onModalClose } = props;

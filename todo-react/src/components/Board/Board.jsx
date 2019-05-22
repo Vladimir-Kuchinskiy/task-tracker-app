@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import PropTypes from 'prop-types';
 import { ActionCableProvider, ActionCableConsumer } from 'react-actioncable-provider';
@@ -8,7 +8,7 @@ import BoardNavbar from '../Board/BoardNavbar';
 import Spinner from '../common/Spinner';
 import './Board.css';
 
-class Board extends Component {
+class Board extends PureComponent {
   state = { editClicked: false };
 
   componentDidMount() {

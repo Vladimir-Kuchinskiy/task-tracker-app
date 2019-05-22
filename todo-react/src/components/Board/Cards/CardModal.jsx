@@ -34,7 +34,7 @@ class CardModal extends Component {
         <Button
           classes="btn btn-danger pull-right"
           title="Delete"
-          id="Popover1"
+          id="PopoverDeleteCard"
           onClick={this.togglePopover}
         />
       </React.Fragment>

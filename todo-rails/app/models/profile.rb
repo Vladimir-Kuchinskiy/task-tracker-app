@@ -11,11 +11,11 @@ class Profile < ApplicationRecord
 
   delegate :email, :member?, to: :user
 
-  def avatar_url(host_with_port)
+  def avatar_url
     if avatar.attached?
       variant = avatar.variant(resize: '500x500')
       path = Rails.application.routes.url_helpers.rails_representation_path(variant, only_path: true)
-      "http://#{host_with_port}#{path}"
+      "http://#{ENV['APPLICATION_URL']}#{path}"
     else
       ''
     end

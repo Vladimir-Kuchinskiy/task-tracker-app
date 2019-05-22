@@ -11,6 +11,7 @@ services:
       - REDIS_PORT=6379
       - PGUSER=postgres
       - POSTGRES_HOST=db
+      - APPLICATION_URL=localhost
       - PGPASSWORD=$PGPASSWORD
       - MAIL_USERNAME=tasktracker59@gmail.com
       - MAIL_PASSWORD=$MAIL_PASSWORD
@@ -28,7 +29,7 @@ services:
       dockerfile: "Dockerfile.dev"
       context: ./nginx
     ports:
-      - "3050:80"
+      - "80:80"
   sidekiq:
     build:
       dockerfile: "Dockerfile.dev"

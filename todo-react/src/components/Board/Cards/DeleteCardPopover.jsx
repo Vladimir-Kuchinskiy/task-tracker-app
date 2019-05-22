@@ -7,13 +7,13 @@ import './styles/DeleteCardPopover.css';
 
 const DeleteCardPopover = ({ card, authToken, deleteCard, isOpen, toggle }) => {
   return (
-    <Popover placement="bottom" target="Popover1" isOpen={isOpen} toggle={toggle}>
+    <Popover placement="bottom" target="PopoverDeleteCard" isOpen={isOpen} toggle={toggle}>
       <PopoverHeader>Are you sure you want to delete this card ?</PopoverHeader>
       <PopoverBody>
         <Button
           classes="btn btn-danger delete-card"
           title="Delete"
-          id="Popover1"
+          id="PopoverDeleteCard"
           onClick={() => deleteCard(card.id, card.listId, authToken)}
         />
       </PopoverBody>

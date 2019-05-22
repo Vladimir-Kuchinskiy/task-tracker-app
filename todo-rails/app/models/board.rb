@@ -15,11 +15,11 @@ class Board < ApplicationRecord
     lists.ordered.ids.map(&:to_s)
   end
 
-  def members(host_with_port)
+  def members
     if team_id
-      team.users.map { |user| user.member_data(host_with_port) }
+      team.users.map(&:member_data)
     else
-      [user.member_data(host_with_port)]
+      [user.member_data]
     end
   end
 

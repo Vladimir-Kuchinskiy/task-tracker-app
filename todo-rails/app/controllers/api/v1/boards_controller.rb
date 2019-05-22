@@ -23,7 +23,7 @@ module Api
         json_response(BoardSerializer.new(
                         @board,
                         include: %i[lists lists.cards lists.cards.user_cards],
-                        params: { current_user_id: current_user.id, host_with_port: request.host_with_port }
+                        params: { current_user_id: current_user.id }
                       ))
       end
 

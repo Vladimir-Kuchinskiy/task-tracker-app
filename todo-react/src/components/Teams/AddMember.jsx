@@ -7,7 +7,7 @@ import SearchForm from './SearchForm';
 const AddMember = ({ findedUserEmails, searchUsers }) => {
   useEffect(() => {
     return () => searchUsers('');
-  }, []);
+  }, [searchUsers]);
 
   const handleChange = e => {
     searchUsers(e.target.value);
