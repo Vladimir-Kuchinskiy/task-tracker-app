@@ -6,6 +6,12 @@ services:
       dockerfile: "Dockerfile.dev"
       context: ./todo-rails
     env_file: ./todo-rails/.env
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - POSTGRES_USER=postgres
+      - POSTGRES_HOST=db
+      - MAIL_USERNAME=tasktracker59@gmail.com
     volumes:
       - ./todo-rails:/app
     depends_on:
@@ -29,14 +35,9 @@ services:
   db:
     image: postgres:10.3-alpine
     volumes:
-      - ./db-data:/var/lib/postgresql/db-data
+      - ./todo-rails/db-data:/var/lib/postgresql/db-data
   redis:
     image: redis:5.0.5-alpine
-  # mailcatcher:
-  #   image: yappabe/mailcatcher
-  #   ports:
-  #     - 1025:1025
-  #     - 1080:1080
   client:
     build:
       dockerfile: "Dockerfile.dev"
