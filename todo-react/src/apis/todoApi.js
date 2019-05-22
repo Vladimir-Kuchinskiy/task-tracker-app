@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { messages } from '../constants';
 import storage from 'redux-persist/lib/storage';
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = '/api';
 
 axios.interceptors.response.use(null, error => {
   const { response } = error;

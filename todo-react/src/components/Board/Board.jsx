@@ -35,7 +35,7 @@ class Board extends Component {
     const content = loading ? (
       <Spinner style={{ marginLeft: '50%' }} />
     ) : (
-      <ActionCableProvider url={process.env.REACT_APP_API_WS_URL}>
+      <ActionCableProvider url={'/cable'}>
         <ActionCableConsumer
           channel={{ channel: 'BoardsChannel', board_id: rest.board.id }}
           onReceived={this.props.handleReceived}

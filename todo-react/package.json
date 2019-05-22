@@ -21,7 +21,7 @@
     "react-redux": "^6.0.0",
     "react-router-dom": "next",
     "react-router-last-location": "^2.0.0-beta.1",
-    "react-scripts": "^2.1.4",
+    "react-scripts": "^3.0.1",
     "react-test-renderer": "^16.8.3",
     "react-toastify": "^4.4.3",
     "react-tooltip": "^3.10.0",
@@ -38,7 +38,7 @@
     "sweetalert2": "^8.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "export PORT=3001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "ci-test": "CI=true react-scripts test",

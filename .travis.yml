@@ -4,12 +4,12 @@ services:
 
 before_install:
   - docker-compose build client
-  - docker-compose build server
+  - docker-compose build api
 
 script:
   - docker-compose run --rm client npm run ci-test
-  - docker-compose run --rm server RAILS_ENV=test rails db:create db:migrate
-  - docker-compose run --rm server rubocop && rspec
+  - docker-compose run --rm api rake db:create db:migrate RAILS_ENV=test
+  - docker-compose run --rm api rubocop && rspec
 # after_success:
 #   - docker build -t vladimirkuchinskiy/task-tracker-client ./todo-react
 #   - docker build -t vladimirkuchinskiy/task-tracker-server ./todo-rails
