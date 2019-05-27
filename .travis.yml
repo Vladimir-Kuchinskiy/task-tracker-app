@@ -16,6 +16,7 @@ script:
   - docker-compose run --rm api rake db:create db:migrate
   - docker-compose run --rm api rubocop
   - docker-compose run --rm api rspec
+
 after_success:
   - docker build -t vladimirkuchinskiy/task-tracker-client ./todo-react
   - docker build -t vladimirkuchinskiy/task-tracker-server ./todo-rails
@@ -26,3 +27,17 @@ after_success:
   - docker push vladimirkuchinskiy/task-tracker-client
   - docker push vladimirkuchinskiy/task-tracker-server
   - docker push vladimirkuchinskiy/task-tracker-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-central-1
+  app: task-tracker
+  env: TaskTracker-env
+  bucket_name: elasticbeanstalk-eu-central-1-833679727268
+  bucket_path: task-tracker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+

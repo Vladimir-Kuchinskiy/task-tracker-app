@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "vladimirkuchinskiy/task-tracker-client",
+      "hostname": "client",
+      "": "",
+      "essential": false
+    },
+    {
+      "name": "api",
+      "image": "vladimirkuchinskiy/task-tracker-server",
+      "hostname": "api",
+      "": "",
+      "essential": false,
+      "links": ["redis"]
+    },
+    {
+      "name": "sidekiq",
+      "image": "vladimirkuchinskiy/task-tracker-server",
+      "command": "bundle exec sidekiq -C config/sidekiq.yml",
+      "": "",
+      "links": ["redis"]
+    },
+    {
+      "name": "nginx",
+      "image": "vladimirkuchinskiy/task-tracker-nginx",
+      "hostname": "nginx",
+      "": "",
+      "essential": true,
+      "portMappings": [{ "hostPort": 80, "containerPort": 80 }],
+      "links": ["client", "api"]
+    }
+  ]
+}

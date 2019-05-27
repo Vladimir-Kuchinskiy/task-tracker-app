@@ -10,8 +10,8 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - PGUSER=postgres
-      - POSTGRES_HOST=db
-      - APPLICATION_URL=localhost
+      - PGHOST=$PGHOST
+      - APPLICATION_URL=$APPLICATION_URL
       - PGPASSWORD=$PGPASSWORD
       - MAIL_USERNAME=tasktracker59@gmail.com
       - MAIL_PASSWORD=$MAIL_PASSWORD
