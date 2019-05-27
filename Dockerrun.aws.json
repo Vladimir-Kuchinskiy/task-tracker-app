@@ -5,14 +5,14 @@
       "name": "client",
       "image": "vladimirkuchinskiy/task-tracker-client",
       "hostname": "client",
-      "": "",
+      "memory": "128",
       "essential": false
     },
     {
       "name": "api",
       "image": "vladimirkuchinskiy/task-tracker-server",
       "hostname": "api",
-      "": "",
+      "memory": "128",
       "essential": false,
       "links": ["redis"]
     },
@@ -20,14 +20,14 @@
       "name": "sidekiq",
       "image": "vladimirkuchinskiy/task-tracker-server",
       "command": "bundle exec sidekiq -C config/sidekiq.yml",
-      "": "",
+      "memory": "128",
       "links": ["redis"]
     },
     {
       "name": "nginx",
       "image": "vladimirkuchinskiy/task-tracker-nginx",
       "hostname": "nginx",
-      "": "",
+      "memory": "128",
       "essential": true,
       "portMappings": [{ "hostPort": 80, "containerPort": 80 }],
       "links": ["client", "api"]

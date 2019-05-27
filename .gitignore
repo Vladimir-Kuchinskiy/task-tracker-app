@@ -11,7 +11,7 @@ todo-rails/.bundle
 todo-rails/log/*
 todo-rails/tmp/*
 todo-rails/!/log/.keep
-todo-rails/!/tmp/.keep
+todo-rails/!/tmp
 
 # Ignore uploaded files in development
 todo-rails/storage/*
