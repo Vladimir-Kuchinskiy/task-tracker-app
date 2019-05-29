@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: ./todo-rails
+    env_file: .env
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PGUSER=postgres
+      - PGPASSWORD=$PGPASSWORD
+      - PGHOST=db
+      - APPLICATION_URL=localhost
+      - MAIL_USERNAME=tasktracker59@gmail.com
+      - MAIL_PASSWORD=$MAIL_PASSWORD
+      - RAILS_MASTER_KEY=$RAILS_MASTER_KEY
+    volumes:
+      - ./todo-rails:/app
+    depends_on:
+      - db
+      - redis
+    stdin_open: true
+    tty: true
+  sidekiq:
+    build:
+      context: ./todo-rails
+    env_file: .env
+    command: bundle exec sidekiq -C config/sidekiq.yml
+  db:
+    image: postgres:10.3-alpine
+    env_file: .env
+    environment:
+      - PGUSER=postgres
+      - PGPASSWORD=$PGPASSWORD
+    volumes:
+      - ./todo-rails/db-data:/var/lib/postgresql/db-data
+  redis:
+    image: redis:5.0.5-alpine
+  client:
+    build:
+      context: ./todo-react
+    volumes:
+      - /app/node_modules
+      - ./todo-react:/app
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"

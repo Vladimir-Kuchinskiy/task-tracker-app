@@ -16,4 +16,4 @@ WORKDIR /app
 COPY Gemfile* ./
 RUN bundle install
 COPY . .
-CMD ["bundle", "exec", "rake", "db:migrate", "&&", "bundle", "exec", "puma", "-C", "/app/config/puma.rb"]
+CMD ["sh", "./bin/start.sh"]
