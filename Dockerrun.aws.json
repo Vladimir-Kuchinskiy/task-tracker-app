@@ -13,15 +13,14 @@
       "image": "vladimirkuchinskiy/task-tracker-server",
       "hostname": "api",
       "memory": "128",
-      "essential": false,
-      "links": ["redis"]
+      "essential": false
     },
     {
       "name": "sidekiq",
       "image": "vladimirkuchinskiy/task-tracker-server",
       "command": "bundle exec sidekiq -C config/sidekiq.yml",
       "memory": "128",
-      "links": ["redis"]
+      "essential": false
     },
     {
       "name": "nginx",
